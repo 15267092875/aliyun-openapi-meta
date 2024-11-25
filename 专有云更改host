@@ -1,0 +1,10 @@
+专有云更改host
+1. 在aliyun-cli项目里更改main/main.go中的aliyunopenapimeta地址为 aliyunopenapimeta "github.com/15267092875/aliyun-openapi-meta"  
+2. 将项目aliyunopenapimeta加进来 go get github.com/15267092875/aliyun-openapi-meta
+3. 修改/aliyun-openapi-meta/metadatas/products.json中的域名为专有云的域名。
+（需要更改地址的还有其他的，比如zh下的，还有其他的目录../config/profile.go，最好用sed全部替换。）
+4. 打包go build -ldflags "-X 'github.com/aliyun/aliyun-cli/cli.Version=3.0.0-beta'" -o out/aliyun main/main.go
+5. 执行打包的文件进行认证./aliyun configure   （这里改成功了）
+6. 测试./aliyun ecs DescribeRegions          （这里还没有）
+
+
